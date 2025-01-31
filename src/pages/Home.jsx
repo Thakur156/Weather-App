@@ -6,6 +6,18 @@ import axios from "axios";
 
 const Home = ({ location }) => {
   const [value, setValue] = useState(null);
+  const [city, setCity] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=ebfe154d3fe337f02e40b43787701606`
+      )
+      .then((value) => {
+        etValue(value);
+        setCity("");
+      });
+  };
 
   useEffect(() => {
     axios.get(
@@ -25,11 +37,16 @@ const Home = ({ location }) => {
           <Sidebar />
         </div>
         <div className="md:basis-7/12 flex flex-col text-white mx-5">
-          <form className="flex justify-between items-center">
+          <form
+            className="flex justify-between items-center"
+            onSubmit={handleSubmit}
+          >
             <input
               className="bg-gray-800 w-full mt-6 p-5 rounded-3xl focus:outline-none"
               type="text"
               placeholder="See Default City"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
             />
             <img
               src="../src/assets/images/currentLocation.svg"
