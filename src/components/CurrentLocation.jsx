@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Home from "./Home";
+import Home from "../pages/Home";
 
 export default function CurrentLocation() {
   const [latitude, setLatitude] = useState(null);

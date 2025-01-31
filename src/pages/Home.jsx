@@ -5,6 +5,7 @@ import Hero from "../components/Hero";
 import axios from "axios";
 
 const Home = ({ location }) => {
+  console.log(location);
   const [value, setValue] = useState(null);
   const [city, setCity] = useState("");
   const handleSubmit = (e) => {
@@ -13,21 +14,21 @@ const Home = ({ location }) => {
       .get(
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=ebfe154d3fe337f02e40b43787701606`
       )
-      .then((value) => {
-        setValue(value);
+      .then((res) => {
+        setValue(res.data);
         setCity("");
       });
   };
 
   useEffect(() => {
-    axios.get(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&appid=ebfe154d3fe337f02e40b43787701606`.then(
-        (value) => {
-          setValue = value;
-          console.log(value);
-        }
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&appid=ebfe154d3fe337f02e40b43787701606`
       )
-    );
+      .then((res) => {
+        setValue(res.data);
+        console.log(res);
+      });
   }, []);
 
   return (
@@ -54,7 +55,7 @@ const Home = ({ location }) => {
               alt="Current Location"
             />
           </form>
-          <Hero />
+          <Hero value={value} />
         </div>
         <div className="md:basis-4/12 m-6 text-white">
           <Forecast />
