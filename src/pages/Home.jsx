@@ -14,7 +14,7 @@ const Home = ({ location }) => {
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=ebfe154d3fe337f02e40b43787701606`
       )
       .then((value) => {
-        etValue(value);
+        setValue(value);
         setCity("");
       });
   };
