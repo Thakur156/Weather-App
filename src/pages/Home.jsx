@@ -3,9 +3,8 @@ import Sidebar from "../components/Sidebar";
 import Forecast from "../components/Forecast";
 import Hero from "../components/Hero";
 import axios from "axios";
-
+import { Triangle } from "react-loader-spinner";
 const Home = ({ location }) => {
-  console.log(location);
   const [value, setValue] = useState(null);
   const [city, setCity] = useState("");
   const handleSubmit = (e) => {
@@ -15,7 +14,7 @@ const Home = ({ location }) => {
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=ebfe154d3fe337f02e40b43787701606`
       )
       .then((res) => {
-        setValue(res.data);
+        setValue(res);
         setCity("");
       });
   };
@@ -26,12 +25,11 @@ const Home = ({ location }) => {
         `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&appid=ebfe154d3fe337f02e40b43787701606`
       )
       .then((res) => {
-        setValue(res.data);
-        console.log(res);
+        setValue(res);
       });
   }, []);
 
-  return (
+  return value ? (
     <>
       <div className="flex md:flex-row flex-col h-auto  bg-black">
         <div className="md:basis-1/12 h-full">
@@ -58,10 +56,22 @@ const Home = ({ location }) => {
           <Hero value={value} />
         </div>
         <div className="md:basis-4/12 m-6 text-white">
-          <Forecast />
+          <Forecast value={value} />
         </div>
       </div>
     </>
+  ) : (
+    <div className="flex h-screen bg-black items-center justify-center">
+      <Triangle
+        height="80"
+        width="100"
+        color="#FFF"
+        ariaLabel="triangle-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+      />
+    </div>
   );
 };
 

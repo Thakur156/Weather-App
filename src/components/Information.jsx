@@ -10,7 +10,7 @@ import {
   FaWind,
 } from "react-icons/fa6";
 
-const Information = () => {
+const Information = ({ value }) => {
   return (
     <>
       <div className="basis-6/12 bg-gray-800 rounded-3xl p-5 mt-2">
@@ -22,28 +22,36 @@ const Information = () => {
                 <FaTemperatureQuarter />
                 Real Feel
               </p>
-              <h1 className="font-bold text-xl pl-8 ">21°C</h1>
+              <h1 className="font-bold text-xl pl-8 ">
+                {parseInt(value.data.list[0].main.feels_like - 273)}°C
+              </h1>
             </div>
             <div className="flex flex-col justify-evenly">
               <p className="flex items-center gap-2">
                 <FaDroplet />
-                Real Feel
+                Humidity
               </p>
-              <h1 className="font-bold text-xl pl-8 ">21°C</h1>
+              <h1 className="font-bold text-xl pl-8 ">
+                {value.data.list[0].main.humidity}
+              </h1>
             </div>
             <div className="flex flex-col justify-evenly">
               <p className="flex items-center gap-2">
                 <FaBolt />
-                Real Feel
+                Wind Speed
               </p>
-              <h1 className="font-bold text-xl pl-8 ">21°C</h1>
+              <h1 className="font-bold text-xl pl-8 ">
+                {value.data.list[0].wind.speed}
+              </h1>
             </div>
             <div className="flex flex-col justify-evenly">
               <p className="flex items-center gap-2">
                 <FaFan />
-                Real Feel
+                Temp Min
               </p>
-              <h1 className="font-bold text-xl pl-8 ">21°C</h1>
+              <h1 className="font-bold text-xl pl-8 ">
+                {parseInt(value.data.list[0].main.temp_min - 273)}°C
+              </h1>
             </div>
           </div>
 
@@ -51,30 +59,38 @@ const Information = () => {
             <div className="flex flex-col justify-evenly">
               <p className="flex items-center gap-2">
                 <FaWind />
-                Real Feel
+                Air Pressure
               </p>
-              <h1 className="font-bold text-xl pl-8 ">21°C</h1>
+              <h1 className="font-bold text-xl pl-8 ">
+                {value.data.list[0].main.pressure}
+              </h1>
             </div>
             <div className="flex flex-col justify-evenly">
               <p className="flex items-center gap-2">
                 <FaSun />
-                Real Feel
+                Wind Degree
               </p>
-              <h1 className="font-bold text-xl pl-8 ">21°C</h1>
+              <h1 className="font-bold text-xl pl-8 ">
+                {/* {value.data.data.list[0].wind.deg} */}
+              </h1>
             </div>
             <div className="flex flex-col justify-evenly">
               <p className="flex items-center gap-2">
                 <FaFire />
-                Real Feel
+                Temp Max
               </p>
-              <h1 className="font-bold text-xl pl-8 ">21°C</h1>
+              <h1 className="font-bold text-xl pl-8 ">
+                {parseInt(value.data.list[0].main.temp_max - 273)}°C
+              </h1>
             </div>
             <div className="flex flex-col justify-evenly">
               <p className="flex items-center gap-2">
                 <FaSmog />
-                Real Feel
+                Gust
               </p>
-              <h1 className="font-bold text-xl pl-8 ">21°C</h1>
+              <h1 className="font-bold text-xl pl-8 ">
+                {/* {value.data.data.list[0].wind.gust} */}
+              </h1>
             </div>
           </div>
         </div>
