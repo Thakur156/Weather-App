@@ -71,7 +71,7 @@ const Information = ({ value }) => {
                 Wind Degree
               </p>
               <h1 className="font-bold text-xl pl-8 ">
-                {/* {value.data.data.list[0].wind.deg} */}
+                {value.data.list[0].wind.deg}
               </h1>
             </div>
             <div className="flex flex-col justify-evenly">
@@ -89,7 +89,7 @@ const Information = ({ value }) => {
                 Gust
               </p>
               <h1 className="font-bold text-xl pl-8 ">
-                {/* {value.data.data.list[0].wind.gust} */}
+                {value.data.list[0].wind.gust}
               </h1>
             </div>
           </div>

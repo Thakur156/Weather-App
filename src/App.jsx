@@ -1,18 +1,20 @@
 import React from "react";
-import Home from "./pages/Home";
+
 import { Route, Routes } from "react-router-dom";
 import NotFoundPage from "./components/NotFoundPage";
-import Cities from "./pages/Cities";
+import Cities from "./components/Cities";
 import CurrentLocation from "./components/CurrentLocation";
-
+import { CityListProvider } from "./components/CitiesListContext";
 const App = () => {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<CurrentLocation />} />
-        <Route path="/cities" element={<Cities />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <CityListProvider>
+        <Routes>
+          <Route path="/" element={<CurrentLocation />} />
+          <Route path="/cities" element={<Cities />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </CityListProvider>
     </>
   );
 };

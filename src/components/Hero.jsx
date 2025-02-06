@@ -3,7 +3,6 @@ import Information from "./Information";
 import Geturl from "./Geturl";
 
 const Hero = ({ value }) => {
-  console.log(value);
   return (
     <div className="flex flex-col h-full">
       <div className="basis-5/12 p-5 pt-12 relative">

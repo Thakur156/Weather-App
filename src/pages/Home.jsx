@@ -28,6 +28,20 @@ const Home = ({ location }) => {
         setValue(res);
       });
   }, []);
+  function showMsg() {
+    if (location.lat == 31.52) {
+      alert("This website is unable to access your current location.");
+    } else {
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&appid=ebfe154d3fe337f02e40b43787701606`
+        )
+        .then((value) => {
+          setValue(value);
+          console.log(value);
+        });
+    }
+  }
 
   return value ? (
     <>
